@@ -65,7 +65,10 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (body) => {
     try {
-      const { data } = await axios.put("/api/auth/update-profile", body);
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/auth/update-profile`,
+        body,
+      );
       if (data.success) {
         setAuthUser(data.user);
         toast.success("profile updated successfully");
